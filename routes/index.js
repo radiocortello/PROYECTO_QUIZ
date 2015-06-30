@@ -5,8 +5,9 @@ var quiz_controller = require('../controllers/quiz_controller')
 router.get('/', function(req, res, next) {
   res.render('index', { layout:false, titulo: 'QUIZ' });
 });
-router.get('/quizes/question', quiz_controller.question);
-router.get('/quizes/answer', quiz_controller.answer);
+router.get('/quizes/', quiz_controller.index);
+router.get('/quizes/:quizId(\\d+)', quiz_controller.show)
+router.get('/quizes/:quizId(\\d+)/answer', quiz_controller.answer);
 router.get('/author', function (req,res,next) {
   res.render('author')
 });
