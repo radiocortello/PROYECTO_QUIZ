@@ -1,3 +1,13 @@
+Busquedas: 
+<form method='get' action='/quizes'>
+	<div class="row uniform">
+			<ul class='actions'>
+				<li><input type="text" name="search" id='demo-name' value="" placeholder="pregunta a buscar"/></li>
+				<li><input type="submit" class='special' value="Buscar" /></li>
+			</ul>
+	</div>
+</form>
+
 <table>
 <% for (var i in quizes){ %>
 	<tr><td><a href="<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>

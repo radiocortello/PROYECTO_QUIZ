@@ -5,6 +5,7 @@ var quiz_controller = require('../controllers/quiz_controller')
 router.get('/', function(req, res, next) {
   res.render('index', { layout:false, titulo: 'QUIZ' });
 });
+router.param('quizId', quiz_controller.load); //autoload :quizId
 router.get('/quizes/', quiz_controller.index);
 router.get('/quizes/:quizId(\\d+)', quiz_controller.show)
 router.get('/quizes/:quizId(\\d+)/answer', quiz_controller.answer);
