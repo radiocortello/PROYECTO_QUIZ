@@ -43,16 +43,21 @@ exports.answer = function (req, res) {
 //GET /quizes/new
 exports.new = function (req, res) {
 	var quiz = models.Quiz.build( //crea objeto quiz
-		{pregunta: "pregunta", respuesta: "respuesta"});
-	res.render('quizes/new', {quiz: quiz});
+		{pregunta: "", respuesta: ""});
+	res.render('quizes/new', {quiz: quiz, errors: []});
 };
 
 //POST /quizes/create
 exports.create = function (req, res) {
 	var quiz = models.Quiz.build(req.body.quiz);
-	
-	//guarda en DB los campos pregunta y respuesta de quiz
-	quiz.save({fields: ["pregunta", "respuesta"]}).then(function () {
-		res.redirect('/quizes');
+	quiz.validate().then(function (err) {
+		if(err){
+			res.render('quizes/new', {quiz: quiz, errors: err.errors})
+		} else {
+		//guarda en DB los campos pregunta y respuesta de quiz
+		quiz.save({fields: ["pregunta", "respuesta"]}).then(function () {
+			res.redirect('/quizes');
+		});
+		}
 	});
 };
