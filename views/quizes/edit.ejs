@@ -1,0 +1,16 @@
+<h4>Editar pregunta: <%= quiz.pregunta %></h4>
+<% if (errors.length) {%>
+	<blockquote style="color:#DF0101">
+	CORREGIR ERRORES: <br/>
+	<% for (var i in errors) {%>
+		<%= errors[i].message %><br/>
+	<%}%>
+	</blockquote>
+<%}%>
+<h4>Añadir pregunta</h4>
+<form method='post' action='/quizes/<%= quiz.id %>?_method=put'>
+	<% include _form.ejs %>
+</form>
+
+
+

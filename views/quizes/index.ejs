@@ -10,7 +10,10 @@ Busquedas:
 
 <table>
 <% for (var i in quizes){ %>
-	<tr><td><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>
+	<tr>
+		<td><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+		<td><a href="/quizes/<%= quizes[i].id %>/edit" class="button">editar</a></td>
+	</tr>
 <% } %>
 </table>
-<a href='/quizes/new'><button type="button">Crear pregunta</button></a>
+<a href='/quizes/new' class="button">Crear pregunta</a>
