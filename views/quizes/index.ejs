@@ -2,6 +2,14 @@ Busquedas:
 <form method='get' action='/quizes'>
 	<div class="row uniform">
 			<ul class='actions'>
+				<!--<li><div class="select-wrapper"> <select name="tematica">
+					  <option value="" selected>Todas</option>
+					  <option value="otro">Otro</option>
+					  <option value="humanidades">Humanidades</option>
+					  <option value="ocio">Ocio</option>
+					  <option value="ciencia">Ciencia</option>
+					  <option value="tecnologia">Tecnología</option>
+				</select></div></li>-->
 				<li><input type="text" name="search" id='demo-name' value="" placeholder="pregunta a buscar"/></li>
 				<li><input type="submit" class='special' value="Buscar" /></li>
 			</ul>
@@ -11,6 +19,7 @@ Busquedas:
 <table>
 <% for (var i in quizes){ %>
 	<tr>
+		<td><%=quizes[i].tematica%></td>
 		<td><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
 		<td><ul class='actions'>
 			<li><a href="/quizes/<%= quizes[i].id %>/edit" class="button small">editar</a></li>

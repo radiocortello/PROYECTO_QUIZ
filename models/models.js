@@ -38,7 +38,7 @@ sequelize.sync().then(function () {
 	//una vez creada la tabla se ejecuta esto
 	Quiz.count().then(function (count) {
 		if(count===0){
-			Quiz.bulkCreate([{pregunta: 'Capital de Italia?', respuesta: 'Roma'}, {pregunta: 'Capital de Portugal', respuesta: 'Lisboa'}]).then(function () {
+			Quiz.bulkCreate([{pregunta: 'Capital de Italia?', respuesta: 'Roma', tematica: 'humanidades'}, {pregunta: 'Capital de Portugal', respuesta: 'Lisboa', tematica: 'humanidades'}]).then(function () {
 				console.log('base de datos inicializada')
 			});
 		};

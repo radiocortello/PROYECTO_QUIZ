@@ -1,6 +1,13 @@
 
 	<div class="row uniform">
 			<ul class='actions'>
+				<li><div class="select-wrapper"> <select name="quiz[tematica]">
+					  <option value="otro" >Otro</option>
+					  <option value="humanidades" <%= quiz.tematica === 'humanidades' ? "selected" : "" %>>Humanidades</option>
+					  <option value="ocio"<%= quiz.tematica === 'ocio' ? "selected" : "" %>>Ocio</option>
+					  <option value="ciencia"<%= quiz.tematica === 'ciencia' ? "selected" : "" %>>Ciencia</option>
+					  <option value="tecnologia"<%= quiz.tematica === 'tecnologia' ? "selected" : "" %>>Tecnología</option>
+				</select></div></li>
 				<li><input type="text" name="quiz[pregunta]" id='preg' value="<%=quiz.pregunta%>" placeholder='Pregunta'></li>
 				<li><input type="text" name="quiz[respuesta]" id='resp' value="<%=quiz.respuesta%>" placeholder='Respuesta'></li>
 			</ul>
