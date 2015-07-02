@@ -12,7 +12,15 @@ Busquedas:
 <% for (var i in quizes){ %>
 	<tr>
 		<td><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
-		<td><a href="/quizes/<%= quizes[i].id %>/edit" class="button">editar</a></td>
+		<td><ul class='actions'>
+			<li><a href="/quizes/<%= quizes[i].id %>/edit" class="button small">editar</a></li>
+			<li><form method="post" action="/quizes/<%= quizes[i].id %>?_method=delete">
+				<button type="submit" class="button small" onclick="return confirm('borrar: <%= quizes[i].pregunta %>');">
+					borrar				
+				</button>
+				</form>
+			</li>
+		</ul></td>
 	</tr>
 <% } %>
 </table>
