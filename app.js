@@ -41,7 +41,18 @@ app.use(function(req, res, next) {
   next();
 });
 
-
+app.use(function (req,res,next) {
+  if (req.session.user){
+    req.session.tiempoAnterior = req.session.tiempoAnterior || new Date().getTime();
+    req.session.tiempoActual = new Date().getTime();
+    if ((req.session.tiempoAnterior + 60000)<req.session.tiempoActual){
+      delete req.session.tiempoAnterior;
+      delete req.session.user;
+      res.redirect('/login')
+    }
+  }
+  next();
+})
 app.use('/', routes);
 
 
