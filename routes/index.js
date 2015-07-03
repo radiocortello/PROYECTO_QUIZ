@@ -21,16 +21,16 @@ router.get('/logout', session_controller.destroy);
 router.get('/quizes/', quiz_controller.index);
 router.get('/quizes/:quizId(\\d+)', quiz_controller.show)
 router.get('/quizes/:quizId(\\d+)/answer', quiz_controller.answer);
-router.get('/quizes/new', quiz_controller.new)
-router.get('/author', function (req,res,next) {
-  res.render('author')
-});
-router.post('/quizes/create', quiz_controller.create);
-router.get('/quizes/:quizId(\\d+)/edit', quiz_controller.edit);
-router.put('/quizes/:quizId(\\d+)', quiz_controller.update);
-router.delete('/quizes/:quizId(\\d+)', quiz_controller.destroy);
+router.get('/quizes/new',session_controller.loginRequired, quiz_controller.new)
+router.post('/quizes/create',session_controller.loginRequired, quiz_controller.create);
+router.get('/quizes/:quizId(\\d+)/edit',session_controller.loginRequired, quiz_controller.edit);
+router.put('/quizes/:quizId(\\d+)',session_controller.loginRequired, quiz_controller.update);
+router.delete('/quizes/:quizId(\\d+)',session_controller.loginRequired, quiz_controller.destroy);
 
 router.get('/quizes/:quizId(\\d+)/comments/new', comment_controller.new);
 router.post('/quizes/:quizId(\\d+)/comments', comment_controller.create);
 
+router.get('/author', function (req,res,next) {
+  res.render('author')
+});
 module.exports = router;
