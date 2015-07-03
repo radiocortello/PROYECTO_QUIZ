@@ -9,3 +9,10 @@
 </form>
 
 
+<p><strong>Comentarios:</strong></p>
+<ul>
+<%for(var index in quiz.Comments){%>
+	<li><%=quiz.Comments[index].texto%></li>
+<%}%>
+</ul>
+<p><a href="/quizes/<%= quiz.id %>/comments/new" class="button">nuevo comentario</a></p>

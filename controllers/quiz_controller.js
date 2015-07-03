@@ -2,7 +2,10 @@ var models = require('../models/models.js');
 
 //Autoload- factoriza el codigo si ruta incluye :quizId
 exports.load = function (req, res, next, quizId) {
-	models.Quiz.findById(quizId).then(
+	models.Quiz.find({
+			where: {id: Number(quizId)},
+			include: [{model: models.Comment}]
+		}).then(
 		function (quiz) {
 			if (quiz){
 			req.quiz = quiz;
@@ -16,8 +19,8 @@ exports.load = function (req, res, next, quizId) {
 exports.index = function (req, res) {
 	if (req.query.search || req.query.tematica){
 		models.Quiz.findAll({where:{
-				pregunta: {$ilike:'%'+ req.query.search	+'%'},
-				tematica: {$ilike:'%'+ req.query.tematica +'%'}
+				pregunta: {$like:'%'+ req.query.search	+'%'},
+				tematica: {$like:'%'+ req.query.tematica +'%'}
 				}
 			}).then(function (quizes) {
 			res.render('quizes/index', {quizes: quizes})

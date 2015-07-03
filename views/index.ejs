@@ -28,7 +28,13 @@
 									<a href="#menu" class="menuToggle"><span>Menu</span></a>
 									<div id="menu">
 										<ul>
-											<li><a href="">Principal</a></li>
+											<% if(!session.user){%>
+											<li><a href="/login">LOGIN</a></li>
+											<%} else {%>
+											<li><strong><%=session.user.username%></strong></li>
+											<li><a href="/logout">LOGOUT</a></li>
+											<%}%>
+											<li><a href="/">Principal</a></li>
 											<li><a href="/quizes/">Cuestionario</a></li>
 											<li><a href="/author">Autor</a></li>
 										</ul>

@@ -1,0 +1,28 @@
+<h2>LOGIN</h2>
+<% if (errors.length) {%>
+	<blockquote style="color:#DF0101">
+	CORREGIR ERRORES: <br/>
+	<% for (var i in errors) {%>
+		<%= errors[i].message %><br/>
+	<%}%>
+	</blockquote>
+<%}%>
+<h4>Añadir comentario</h4>
+<form method='post' action='/login'>
+
+	<div class="row uniform">
+			<ul class='actions'>
+				<li><input type="text" name="login" id='login' value="" placeholder='usuario'></li>
+				<li><input type="password" name="password" id='pasword' value="" placeholder='contraseña'></li>
+			</ul>
+	</div>
+	<div class="row uniform">
+			<ul class='actions'>
+				<li><input type="submit" class='special' value="Login"></li>
+				<li><a href='/' class='button' >Cancelar</a></li>
+			</ul>
+	</div>
+
+</form>
+
+

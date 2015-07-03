@@ -1,0 +1,14 @@
+<% if (errors.length) {%>
+	<blockquote style="color:#DF0101">
+	CORREGIR ERRORES: <br/>
+	<% for (var i in errors) {%>
+		<%= errors[i].message %><br/>
+	<%}%>
+	</blockquote>
+<%}%>
+<h4>Añadir comentario</h4>
+<form method='post' action='/quizes/<%=quizid%>/comments'>
+	<% include _form.ejs %>
+</form>
+
+
